@@ -9,9 +9,9 @@ $mysqli->set_charset("utf8");
 $sqls = "SELECT * FROM items";
 $sqlss = "INSERT INTO items(name) VALUE  ('banana');";
 
-for($i = 0; $i < 100 ; $i++){
+/*for($i = 0; $i < 100 ; $i++){
     $mysqli->query($sqlss);
-}
+}*/
 
 $result = $mysqli->query($sqls);
 $mysqli->commit();
@@ -19,6 +19,7 @@ $mysqli->commit();
 while ($actor = $result->fetch_assoc()) {
    $value[] = $actor;
 }
+$value[0]['id'] *= 5 ;
 var_dump($value);
 
 ?>
