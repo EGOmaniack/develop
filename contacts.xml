@@ -1,0 +1,22 @@
+<contact>
+    <id>123456</id>
+    <last>O'reily&quot;</last>
+    <name>&quot;Ryan O'reily&quot;</name>
+    <emails>email@address1.com</emails>
+    <emails>email@address2.com</emails>
+    <addresses><zip>zip 1</zip>
+        <street>Street 1</street>
+        <state>State 1</state>
+        <country>Country 1</country>
+        <city>City 1</city>
+    </addresses>
+    <addresses><zip>zip 2</zip>
+        <street>Street 2</street>
+        <state>State 2</state>
+        <country>Country 2</country>
+        <city>City 2</city>
+    </addresses>
+    <first>&quot;Ryan</first>
+    <phones>phone number 1</phones>
+    <phones>phone number 2</phones>
+</contact>
