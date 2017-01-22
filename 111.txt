@@ -1,0 +1,14 @@
+
+C:\ProgramData\Oracle\Java\javapath;
+C:\Windows\system32;
+C:\Windows;
+C:\Windows\System32\Wbem;
+C:\Windows\System32\WindowsPowerShell\v1.0\;
+C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;
+C:\Program Files\Common Files\Autodesk Shared\;
+C:\Program Files (x86)\Autodesk\Backburner\;
+C:\Program Files (x86)\QuickTime\QTSystem\;
+C:\Program Files (x86)\Skype\Phone\
+C:\Program Files\nodejs\;
+C:\Program Files (x86)\GtkSharp\2.12\bin;
+C:\Program Files\PostgreSQL\9.5\bin
