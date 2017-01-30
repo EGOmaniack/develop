@@ -1,7 +1,7 @@
 ﻿<?php
 //phpinfo();
 // Соединение, выбор базы данных
-$dbconn = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=Rgrur4frg56eq16")
+$dbconn = pg_connect("host=192.168.8.54 port=5432 dbname=thedata user=postgres password=Rgrur4frg56eq16")
     or die('Could not connect: ' . pg_last_error());
 
 
