@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-alpha1" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="test" rect-visible="true" fill-color="#e1e1e1">
+	<role name="postgres"/>
+</schema>
+
+<table name="data1">
+	<schema name="test"/>
+	<role name="postgres"/>
+	<position x="629" y="496"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="date" not-null="true" default-value="CURRENT_DATE">
+		<type name="date" length="0"/>
+	</column>
+	<column name="data1">
+		<type name="float" length="0"/>
+	</column>
+	<column name="data2">
+		<type name="float" length="0"/>
+	</column>
+	<constraint name="data1_pk" type="pk-constr" table="test.data1">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•date•data1•data2⸣
+••0.95•1.1⸣
+••0.92•1.15⸣
+••0.88•1.2⸣
+••0.85•1.12⸣
+••0.88•1.11⸣
+••0.91•1.2⸣
+••0.95•1.1⸣
+••0.85•1.12⸣
+••0.4•1.13⸣
+••0.2•1.12⸣
+••0.1•1.2]]>
+	</initial-data>
+</table>
+
+</dbmodel>
