@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.0-alpha1" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="personal" rect-visible="true" fill-color="#e1e1e1">
+	<role name="postgres"/>
+</schema>
+
+<table name="staff">
+	<schema name="personal"/>
+	<role name="postgres"/>
+	<position x="633" y="344"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="sec_name">
+		<type name="text" length="0"/>
+	</column>
+	<column name="sername" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="position" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="berth_date">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="stuff_pk" type="pk-constr" table="personal.staff">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•name•sec_name•sername•position•berth_date⸣
+•1•Петрович•Кожевников•3•19.02.1996⸣
+•2•Василичь•Хренов•2•19.01.1988]]>
+	</initial-data>
+</table>
+
+<schema name="dictionary" rect-visible="true" fill-color="#e1e1e1">
+	<role name="postgres"/>
+</schema>
+
+<table name="names">
+	<schema name="dictionary"/>
+	<role name="postgres"/>
+	<position x="1033" y="255"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="name_pk" type="pk-constr" table="dictionary.names">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•code•name⸣
+•alex•Александр⸣
+•barry•Барри⸣
+•pav•Павел]]>
+	</initial-data>
+</table>
+
+<table name="positions">
+	<schema name="dictionary"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Должность]]></comment>
+	<position x="1054" y="504"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="position_name" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="pos_pk" type="pk-constr" table="dictionary.positions">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•code•position_name⸣
+•clean•Уборщик⸣
+•boss•Директор⸣
+•no_one•Никтожество]]>
+	</initial-data>
+</table>
+
+<constraint name="staff_name_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="dictionary.names" table="personal.staff">
+	<columns names="name" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="staff_pos_fk" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="dictionary.positions" table="personal.staff">
+	<columns names="position" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_staff_names" type="relfk"
+	 src-table="personal.staff"
+	 dst-table="dictionary.names"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_staff_positions" type="relfk"
+	 src-table="personal.staff"
+	 dst-table="dictionary.positions"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
