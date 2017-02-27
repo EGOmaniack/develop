@@ -58,9 +58,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
-	<column name="code" not-null="true">
-		<type name="varchar" length="0"/>
-	</column>
 	<column name="name" not-null="true">
 		<type name="text" length="0"/>
 	</column>
@@ -68,10 +65,10 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 	<initial-data>
-<![CDATA[id•code•name⸣
-•alex•Александр⸣
-•barry•Барри⸣
-•pav•Павел]]>
+<![CDATA[id•name⸣
+•Александр⸣
+•Барри⸣
+•Павел]]>
 	</initial-data>
 </table>
 
@@ -96,8 +93,66 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <![CDATA[id•code•position_name⸣
 •clean•Уборщик⸣
 •boss•Директор⸣
-•no_one•Никтожество]]>
+•no_one•Никтожество⸣
+•scram•Скраммастер]]>
 	</initial-data>
+</table>
+
+<schema name="temp" rect-visible="true" fill-color="#e1e1e1">
+	<role name="postgres"/>
+</schema>
+
+<table name="temp_staff">
+	<schema name="temp"/>
+	<role name="postgres"/>
+	<position x="526.607" y="636.429"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name">
+		<type name="text" length="0"/>
+	</column>
+	<column name="sec_name">
+		<type name="text" length="0"/>
+	</column>
+	<column name="sername">
+		<type name="text" length="0"/>
+	</column>
+	<column name="position">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="bearth_day">
+		<type name="date" length="0"/>
+	</column>
+	<column name="json">
+		<type name="int4" length="0"/>
+	</column>
+	<constraint name="temp_staff_pk" type="pk-constr" table="temp.temp_staff">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•name•sec_name•sername•position•bearth_day⸣
+•Александр•Васильевич•Гнидович•clean•18.02.1989⸣
+•Петр•Сергеевич•Васильков•scram•16.01.1990⸣
+•Николай•Петрович•Решетников•no_one•12.12.1985⸣
+•Дмитрий•Какойтовичь•Ласточкин•clean•08.06.1986⸣
+•Сергей•Сергеич•Примаков•boss•07.07.2001]]>
+	</initial-data>
+</table>
+
+<table name="json_table">
+	<schema name="temp"/>
+	<role name="postgres"/>
+	<position x="900" y="842.857"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="info">
+		<type name="json" length="0"/>
+	</column>
+	<constraint name="js_pk" type="pk-constr" table="temp.json_table">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
 </table>
 
 <constraint name="staff_name_fk" type="fk-constr" comparison-type="MATCH FULL"
@@ -112,6 +167,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="json_link" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="temp.json_table" table="temp.temp_staff">
+	<columns names="json" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
 <relationship name="rel_staff_names" type="relfk"
 	 src-table="personal.staff"
 	 dst-table="dictionary.names"
@@ -120,6 +181,15 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <relationship name="rel_staff_positions" type="relfk"
 	 src-table="personal.staff"
 	 dst-table="dictionary.positions"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="rel_temp_staff_json_table" type="relfk"
+	 src-table="temp.temp_staff"
+	 dst-table="temp.json_table"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
